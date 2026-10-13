@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope, Care & A Brighter Future | Sons of Manasseh Children's Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon has-img"><img src="images/logo.jpg" alt="Sons of Manasseh Children's Home logo"></div>
+            <div class="logo-text"><strong>Sons of Manasseh Children's Home</strong></div>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="projects.html">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="our-home.html">Our Home</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="donate.html" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<section class="home-hero-text compact-hero">
+    <div class="container hero-content">
+        <span class="hero-label">Hope • Care • Empowerment</span>
+        <h1>Raising the Future Generation</h1>
+        <p>Protecting, caring for, and empowering orphans and vulnerable children by providing holistic support that restores hope and creates brighter futures.</p>
+        <div class="hero-buttons">
+            <a href="about.html" class="btn btn-light">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="donate.html" class="btn btn-outline-light">Support Our Children <i class="fa-solid fa-heart"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="home-carousel tone-c" aria-roledescription="carousel" aria-label="Photos from life at Sons of Manasseh Children's Home">
+    <div class="container">
+        <div class="carousel">
+            <div class="hero-slides">
+                <img class="hero-slide active" src="images/girls-celebrate.jpg" alt="Young women of Sons of Manasseh Children's Home laughing and celebrating together" style="object-position:center 5%">
+                <img class="hero-slide" src="images/team-front-2.jpg" alt="Boys of the SMCH Football Club posing in their blue kits outside the home" style="object-position:center 68%">
+                <img class="hero-slide" src="images/hero.jpg" alt="Young women blowing kisses to the camera" style="object-position:center 12%">
+                <img class="hero-slide" src="images/reading-two-1.jpg" alt="Two children reading in the reading room" style="object-position:center 40%" loading="lazy">
+                <div class="hero-slide portrait"><img class="bg" src="images/christmas-kids.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="images/christmas-kids.jpg" alt="Two smiling children wearing festive Christmas glasses and headbands at a table" loading="lazy"></div>
+                <img class="hero-slide" src="images/volunteer.jpg" alt="Children and volunteers sharing gifts at Christmas" style="object-position:center 40%" loading="lazy">
+                <img class="hero-slide" src="images/home-play.jpg" alt="Children enjoying a fun day at the swimming pool" style="object-position:center 40%" loading="lazy">
+                <div class="hero-slide portrait"><img class="bg" src="images/study-boy.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="images/study-boy.jpg" alt="A boy concentrating on his homework in the reading room" loading="lazy"></div>
+                <img class="hero-slide" src="images/maize-2.jpg" alt="Tall maize growing at the home's farm under a dramatic sky" style="object-position:center 60%" loading="lazy">
+            </div>
+            <button class="hero-arrow prev" type="button" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero-arrow next" type="button" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="hero-pause" type="button" aria-label="Pause the slideshow"><i class="fa-solid fa-pause"></i></button>
+            <div class="hero-dots"></div>
+        </div>
+    </div>
+</section>
+<script>
+(function () {
+    var root = document.querySelector(".carousel");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".hero-slide"));
+    var dotsBox = root.querySelector(".hero-dots");
+    var pauseBtn = root.querySelector(".hero-pause");
+    var DELAY = 5000;            // each photo stays for 5 seconds
+    var i = 0, timer = null, userPaused = false, startX = null;
+
+    slides.forEach(function (_, n) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Go to photo " + (n + 1));
+        b.addEventListener("click", function () { go(n); play(); });
+        dotsBox.appendChild(b);
+    });
+    dotsBox.children[0].classList.add("active");
+
+    function go(n) {
+        slides[i].classList.remove("active");
+        dotsBox.children[i].classList.remove("active");
+        i = (n + slides.length) % slides.length;
+        slides[i].classList.add("active");
+        dotsBox.children[i].classList.add("active");
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+        stop();
+        if (!userPaused && !document.hidden) { timer = setInterval(function () { go(i + 1); }, DELAY); }
+    }
+
+    root.querySelector(".hero-arrow.prev").addEventListener("click", function () { go(i - 1); play(); });
+    root.querySelector(".hero-arrow.next").addEventListener("click", function () { go(i + 1); play(); });
+
+    pauseBtn.addEventListener("click", function () {
+        userPaused = !userPaused;
+        var icon = pauseBtn.querySelector("i");
+        icon.classList.toggle("fa-pause", !userPaused);
+        icon.classList.toggle("fa-play", userPaused);
+        pauseBtn.setAttribute("aria-label", userPaused ? "Play the slideshow" : "Pause the slideshow");
+        play();
+    });
+
+    /* swipe on phones */
+    root.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) { go(dx < 0 ? i + 1 : i - 1); play(); }
+        startX = null;
+    });
+
+    /* arrow keys when the carousel has focus */
+    root.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") { go(i - 1); play(); }
+        if (e.key === "ArrowRight") { go(i + 1); play(); }
+    });
+
+    /* save battery: pause while the tab is hidden, carry on when it is visible */
+    document.addEventListener("visibilitychange", play);
+
+    play();   // starts moving by itself as soon as the page loads
+})();
+</script>
+
+<section class="intro-section tone-b compact">
+    <div class="container intro-grid">
+        <div class="intro-content">
+            <span class="section-label">Who We Are</span>
+            <h2>Creating a safe place for children to grow and thrive.</h2>
+            <p>Sons of Manasseh Children’s Home (SMCH) is a registered Children’s Charitable Institution (CCI) in Kenya.</p>
+            <p>Founded in 2007, SMCH exists to protect, care for, and empower orphans and vulnerable children by providing holistic support that transforms lives and restores hope.</p>
+            <a href="about.html" class="text-link">More About Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="intro-highlight">
+            <div class="highlight-icon"><i class="fa-solid fa-child-reaching"></i></div>
+            <span>Our Impact</span>
+            <strong>Every Child</strong>
+            <p>protected, cared for and supported across different education levels, from preschool to university.</p>
+        </div>
+    </div>
+</section>
+
+<section class="story-section tone-c compact">
+    <div class="container story-grid">
+        <div class="story-image"><img src="images/school.jpg" alt="Children of Sons of Manasseh Children's Home in their school uniforms"></div>
+        <div class="story-content">
+            <span class="section-label">Our Story</span>
+            <h2>From a simple outreach to a home filled with hope.</h2>
+            <p>Sons of Manasseh Children’s Home was founded by the late Rev. Joseph Munywoki and his wife, Beatrice Kirigo Thuita. What began as a simple outreach in Dagoretti near Ndunyu slum — sharing the Gospel and a small meal with vulnerable children every Saturday — soon grew into something greater.</p>
+            <p>Many of the children they encountered were orphans, abandoned, or living in extreme poverty. A large number had lost parents to HIV/AIDS and were forced to drop out of school due to lack of basic needs.</p>
+            <p>The need for shelter, food, education, and protection became urgent. In response, Sons of Manasseh Children’s Home was born.</p>
+            <div class="story-timeline">
+                <div class="timeline-item"><strong>2007</strong><span>Dagoretti</span></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-item"><strong>2009</strong><span>Ngong</span></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-item"><strong>2013</strong><span>Kiserian</span></div>
+            </div>
+            <a href="about.html" class="text-link">Discover Our Story <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="what-we-do tone-b compact">
+    <div class="container">
+        <div class="section-heading centered">
+            <span class="section-label">What We Do</span>
+            <h2>Holistic care for every child</h2>
+            <p>We provide comprehensive care and support that addresses the educational, physical, emotional, and protection needs of vulnerable children.</p>
+        </div>
+        <div class="services-grid">
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-school"></i></div><h3>Education</h3><p>Supporting children from preschool through university level and helping them build brighter futures.</p></div>
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-house"></i></div><h3>Safe Shelter</h3><p>Providing a safe and caring environment where children can grow, learn, and feel protected.</p></div>
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-heart"></i></div><h3>Psycho-social Support &amp; Counselling</h3><p>Providing counselling and supporting children's emotional wellbeing and helping them navigate difficult experiences.</p></div>
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-bowl-food"></i></div><h3>Food and Nutrition</h3><p>Ensuring children have access to regular, nutritious meals that support healthy growth.</p></div>
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-kit-medical"></i></div><h3>Medical Care</h3><p>Helping children access the medical attention and healthcare they need.</p></div>
+<div class="service-card"><div class="service-icon"><i class="fa-solid fa-shield-heart"></i></div><h3>Child Protection</h3><p>Promoting child safeguarding and protecting children from harmful situations and exploitation.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="community-section tone-c compact">
+    <div class="container community-grid">
+        <div class="community-content">
+            <span class="section-label">Reaching Vulnerable Communities</span>
+            <h2>Supporting children beyond the home</h2>
+            <p>In addition to caring for orphans and abandoned children, we support children from the Maasai community who are at risk of practices and circumstances that can interrupt their education and wellbeing.</p>
+            <div class="risk-list">
+                <div><i class="fa-solid fa-check"></i><span>Female Genital Mutilation (FGM)</span></div>
+                <div><i class="fa-solid fa-check"></i><span>Early marriages</span></div>
+                <div><i class="fa-solid fa-check"></i><span>Dropping out of school to graze cattle</span></div>
+            </div>
+        </div>
+        <div class="community-card">
+            <i class="fa-solid fa-hands-holding-child"></i>
+            <h3>Every child deserves a chance.</h3>
+            <p>Through education, protection, care, and support, we work to create opportunities for children to build better futures.</p>
+        </div>
+    </div>
+</section>
+
+<section class="impact-section tone-b compact">
+    <div class="container">
+        <div class="section-heading centered">
+            <span class="section-label">Our Impact</span>
+            <h2>Hope restored. Futures rebuilt.</h2>
+            <p>Over the years, we have witnessed remarkable transformation in the lives of children who once had very little hope for their future.</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card"><i class="fa-solid fa-children"></i><strong>Every Child</strong><span>Protected, Cared For &amp; Empowered</span></div>
+            <div class="impact-card"><i class="fa-solid fa-graduation-cap"></i><strong>Preschool → University</strong><span>Education Support Across Levels</span></div>
+            <div class="impact-card"><i class="fa-solid fa-seedling"></i><strong>Growing</strong><span>Building Sustainable Futures</span></div>
+        </div>
+        <p class="impact-quote">“Every child represents a story of hope restored and a future rebuilt.”</p>
+    </div>
+</section>
+
+<section class="mission-section tone-c compact">
+    <div class="container mission-grid">
+        <div class="mission-card">
+            <div class="mission-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <span class="section-label">Our Mission</span>
+            <h2>Protect. Care. Empower.</h2>
+            <p>To protect, care for, and empower orphans and vulnerable children through holistic interventions that address immediate needs and strengthen long-term child protection systems — giving children joy, hope, and a bright future.</p>
+        </div>
+        <div class="vision-card">
+            <div class="mission-icon"><i class="fa-solid fa-eye"></i></div>
+            <span class="section-label">Our Vision</span>
+            <h2>Raising the future generation.</h2>
+            <p>We envision a future where vulnerable children are protected, supported, educated, and empowered to reach their full potential.</p>
+        </div>
+    </div>
+</section>
+
+<section class="needs-section tone-b compact">
+    <div class="container">
+        <div class="section-heading centered">
+            <span class="section-label">Current Needs</span>
+            <h2>Help us meet the needs of our children</h2>
+            <p>We welcome individuals, organizations, churches, and well-wishers who would like to support the children in practical ways.</p>
+        </div>
+        <div class="needs-grid">
+            <div class="needs-card">
+                <div class="needs-card-header"><div class="needs-icon"><i class="fa-solid fa-basket-shopping"></i></div><h3>Basic Needs</h3></div>
+                <ul>
+<li>Food supplies</li>
+<li>School fees</li>
+<li>Books and stationery</li>
+<li>Medical supplies</li>
+<li>Clothing and shoes</li>
+<li>Toiletries</li>
+<li>Sanitary towels for girls</li>
+<li>Bedding and mattresses</li>
+                </ul>
+            </div>
+            <div class="needs-card">
+                <div class="needs-card-header"><div class="needs-icon"><i class="fa-solid fa-building"></i></div><h3>Equipment &amp; Infrastructure</h3></div>
+                <ul>
+<li>Water tanks</li>
+<li>Beds and mattresses</li>
+<li>Computers</li>
+<li>Desks and furniture</li>
+<li>Solar panels</li>
+<li>Generators</li>
+<li>Utensils</li>
+                </ul>
+            </div>
+        </div>
+        <div class="needs-cta">
+            <h3>Want to make a difference?</h3>
+            <p>There are many ways you can support the children and contribute to the work of Sons of Manasseh.</p>
+            <a href="get-involved.html" class="btn btn-primary">Get Involved <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="location-section tone-c compact">
+    <div class="container location-grid">
+        <div class="location-content">
+            <span class="section-label">Where We Are Located</span>
+            <h2>Find us in Kiserian, Kajiado County</h2>
+            <p>Sons of Manasseh Children’s Home is located in the Kiserian – Olchoro Nyori area.</p>
+            <div class="address">
+                <div><i class="fa-solid fa-location-dot"></i></div>
+                <p>Kajiado County<br>Kajiado West Sub-County<br>Ngong Division<br>Kiserian – Olchoro Nyori area<br>Along Isinya Pipeline Road<br>Plus Code: FMRJ+CP, Olooloitikosh<br>P.O. Box 1734-0502, Karen</p>
+            </div>
+            <a href="contact.html" class="text-link">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="location-card">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h3>Sons of Manasseh Children's Home</h3>
+            <p>Kiserian – Olchoro Nyori<br>Plus Code: FMRJ+CP, Olooloitikosh<br>Kajiado County, Kenya</p>
+        </div>
+    </div>
+</section>
+
+<section class="home-cta compact">
+    <div class="container">
+        <span class="section-label">Be Part of the Story</span>
+        <h2>Together, we can give vulnerable children joy, hope, and a bright future.</h2>
+        <p>Whether you give your time, resources, skills, or financial support, your contribution can help create meaningful opportunities for a child.</p>
+        <div class="cta-buttons">
+            <a href="get-involved.html" class="btn btn-light">Get Involved <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="contact.html" class="btn btn-outline-light">Contact Us <i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div class="footer-about">
+            <a href="index.html" class="footer-logo">
+                <div class="logo-icon has-img"><img src="images/logo.jpg" alt="Sons of Manasseh Children's Home logo"></div>
+                <div><strong>Sons of Manasseh Children's Home</strong></div>
+            </a>
+            <p>Protecting, caring for, and empowering vulnerable children while raising the future generation.</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/manasehkids" target="_blank" rel="noopener" aria-label="Sons of Manasseh on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@sonsofmanasehchildrenhome4097" target="_blank" rel="noopener" aria-label="Sons of Manasseh on YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/beatricethuita" target="_blank" rel="noopener" aria-label="Sons of Manasseh on Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="projects.html">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="our-home.html">Our Home</a>
+        </div>
+        <div class="footer-links">
+            <h3>Get Involved</h3>
+            <a href="get-involved.html#volunteer">Volunteer</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="donate.html">Donate</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p><i class="fa-solid fa-user-tie"></i>Beatrice Thuita, Founder and Director</p>
+            <p><i class="fa-solid fa-location-dot"></i>FMRJ+CP, Olooloitikosh, Kiserian, Kajiado County, Kenya</p>
+            <p><i class="fa-solid fa-inbox"></i>P.O. Box 1734-0502, Karen</p>
+            <p><i class="fa-solid fa-phone"></i><a href="tel:+254722968657">0722 968 657</a></p>
+            <p><i class="fa-solid fa-phone"></i><a href="tel:+254722226569">0722 226 569</a></p>
+            <p><i class="fa-solid fa-envelope"></i><a href="mailto:manassehchildren@gmail.com">manassehchildren@gmail.com</a></p>
+            <p><i class="fa-solid fa-envelope"></i><a href="mailto:beatrice.kirigo@gmail.com">beatrice.kirigo@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2026 Sons of Manasseh Children's Home. All Rights Reserved.</p></div></div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navbar = document.getElementById("navbar");
+    menuToggle.addEventListener("click", function () {
+        const open = navbar.classList.toggle("show");
+        menuToggle.setAttribute("aria-expanded", open);
+        const icon = menuToggle.querySelector("i");
+        icon.classList.toggle("fa-bars", !open);
+        icon.classList.toggle("fa-xmark", open);
+    });
+</script>
+</body>
+</html>

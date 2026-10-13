@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | Sons of Manasseh Children's Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon has-img"><img src="images/logo.jpg" alt="Sons of Manasseh Children's Home logo"></div>
+            <div class="logo-text"><strong>Sons of Manasseh Children's Home</strong></div>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="projects.html">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="our-home.html">Our Home</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="donate.html" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<section class="donate-page-hero compact-hero">
+    <div class="container">
+        <div class="donate-hero-content">
+            <span class="section-tag"><i class="fa-solid fa-heart"></i> Donate</span>
+            <h1>Your Gift Changes a Child's Story</h1>
+            <p>Every contribution helps us provide food, education, safe shelter and care for the children at Sons of Manasseh Children's Home. Thank you for standing with us.</p>
+            <div class="hero-buttons">
+                <a href="#donate-options" class="btn btn-primary">Give Now <i class="fa-solid fa-arrow-down"></i></a>
+                <a href="#give-items" class="btn btn-secondary">Give Items</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="donation-impact section-padding tone-c compact">
+    <div class="container">
+        <div class="section-heading center">
+            <span class="section-tag">Where Your Gift Goes</span>
+            <h2>Giving That Reaches Every Child</h2>
+            <p>Your support meets everyday needs and helps build a stronger future for the home.</p>
+        </div>
+        <div class="donation-impact-grid">
+            <div class="donation-impact-card"><div class="impact-icon"><i class="fa-solid fa-graduation-cap"></i></div><h3>Education</h3><p>School fees, books and stationery that help children learn from preschool through to university.</p></div>
+            <div class="donation-impact-card"><div class="impact-icon"><i class="fa-solid fa-bowl-food"></i></div><h3>Daily Care</h3><p>Food and nutrition, clothing, toiletries, bedding and medical care for the children.</p></div>
+            <div class="donation-impact-card"><div class="impact-icon"><i class="fa-solid fa-house"></i></div><h3>A Safe Home</h3><p>Permanent dormitories, classrooms and facilities that give children a stable and secure place to grow.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="donation-options section-padding tone-b compact" id="donate-options">
+    <div class="container">
+        <div class="section-heading center">
+            <span class="section-tag">Ways to Give</span>
+            <h2>Choose How You Would Like to Give</h2>
+            <p>Give from your phone with mobile money, or through our online fundraiser.</p>
+        </div>
+        <div class="donation-methods two">
+
+            <div class="donation-method-card featured" id="method-momo">
+                <div class="donation-method-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Mobile Money</h3>
+                <p>Give straight from your phone with M-Pesa. It only takes a minute.</p>
+                <div class="reveal" id="momo" data-b="MjQ3MjQ3" data-a="OTY4NjU3">
+                    <button class="btn btn-primary" type="button" id="momoStart">Give with Mobile Money <i class="fa-solid fa-arrow-right"></i></button>
+
+                    <div class="reveal-step" id="momoStep1" hidden>
+                        <span class="step-count">Step 1 of 2</span>
+                        <h4>Get your phone ready</h4>
+                        <p>You will pay using <strong>Lipa na M-Pesa</strong> and then <strong>Pay Bill</strong>. Have your phone and M-Pesa PIN ready. On the next step we will show you the Pay Bill details.</p>
+                        <div class="method-actions">
+                            <button class="btn btn-primary" type="button" id="momoReady">I am ready, show me the details</button>
+                            <button class="btn btn-secondary" type="button" id="momoCancel">Not now</button>
+                        </div>
+                    </div>
+
+                    <div class="reveal-step" id="momoStep2" hidden aria-live="polite">
+                        <span class="step-count">Step 2 of 2</span>
+                        <h4>Pay Bill details</h4>
+                        <div class="payment-details">
+                            <div class="payment-row"><span>Business no.</span><strong><span id="momoBiz"></span> <button class="copy-btn" type="button" id="momoBizCopy">Copy</button></strong></div>
+                            <div class="payment-row"><span>Account no.</span><strong><span id="momoAcc"></span> <button class="copy-btn" type="button" id="momoAccCopy">Copy</button></strong></div>
+                        </div>
+                        <ol class="reveal-list">
+                            <li>Open the M-Pesa menu on your phone.</li>
+                            <li>Choose <strong>Lipa na M-Pesa</strong>, then <strong>Pay Bill</strong>.</li>
+                            <li>Enter the Business no. and the Account no. above.</li>
+                            <li>Enter your amount and M-Pesa PIN, then send.</li>
+                        </ol>
+                        <button class="btn btn-secondary" type="button" id="momoHide">Hide details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="donation-method-card" id="method-mchanga">
+                <div class="donation-method-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>Mchanga</h3>
+                <p>Give any amount on our online fundraiser, and share the link so others can give too.</p>
+                <div class="method-actions">
+                    <a class="btn btn-primary" href="https://www.mchanga.africa/fundraiser/10867" target="_blank" rel="noopener">Give on Mchanga <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <button class="btn btn-secondary" type="button" data-copy="https://www.mchanga.africa/fundraiser/10867">Copy fundraiser link <i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+
+        </div>
+        <p class="payment-note center-note">After giving, we would love to say thank you. Send us a short message with your name and the date of your gift so we can confirm it.</p>
+    </div>
+</section>
+
+<section class="in-kind-section section-padding tone-c compact" id="give-items">
+    <div class="container in-kind-grid">
+        <div class="in-kind-content">
+            <span class="section-tag">Give Items</span>
+            <h2>Support With Items</h2>
+            <p>Practical gifts make a real difference to daily life at the home. Please contact us before delivering items so we can tell you what is needed most.</p>
+            <a href="contact.html" class="btn btn-primary">Arrange a Donation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="in-kind-list">
+            <div class="need-item"><i class="fa-solid fa-wheat-awn"></i> Food supplies</div>
+            <div class="need-item"><i class="fa-solid fa-book"></i> Books &amp; stationery</div>
+            <div class="need-item"><i class="fa-solid fa-kit-medical"></i> Medical supplies</div>
+            <div class="need-item"><i class="fa-solid fa-shirt"></i> Clothing &amp; shoes</div>
+            <div class="need-item"><i class="fa-solid fa-pump-soap"></i> Toiletries</div>
+            <div class="need-item"><i class="fa-solid fa-heart"></i> Sanitary towels</div>
+            <div class="need-item"><i class="fa-solid fa-bed"></i> Bedding &amp; mattresses</div>
+            <div class="need-item"><i class="fa-solid fa-droplet"></i> Water tanks</div>
+        </div>
+    </div>
+</section>
+
+<section class="monthly-giving section-padding tone-b compact">
+    <div class="container">
+        <div class="monthly-card">
+            <div class="monthly-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="monthly-content">
+                <span class="section-tag">Give Regularly</span>
+                <h2>Become a Monthly Supporter</h2>
+                <p>Regular giving, even in small amounts, helps us plan ahead and care for the children consistently. Get in touch and we will guide you on how to give monthly.</p>
+                <a href="contact.html" class="btn btn-primary">Talk to Us <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-giving section-padding tone-c compact">
+    <div class="container">
+        <div class="section-heading center">
+            <span class="section-tag">Give Towards a Project</span>
+            <h2>Help Us Build for the Future</h2>
+            <p>You can also give towards the projects that will strengthen the home. <a class="text-link" href="projects.html">See all projects <i class="fa-solid fa-arrow-right"></i></a></p>
+        </div>
+        <div class="project-giving-grid">
+            <div class="project-giving-card"><i class="fa-solid fa-bed"></i><h3>Dormitories</h3><p>Safe, permanent accommodation for the children.</p></div>
+            <div class="project-giving-card"><i class="fa-solid fa-chalkboard-user"></i><h3>Classrooms</h3><p>Suitable learning spaces for education and development.</p></div>
+            <div class="project-giving-card"><i class="fa-solid fa-utensils"></i><h3>Dining Hall &amp; Kitchen</h3><p>A dedicated place to prepare and share nutritious meals.</p></div>
+            <div class="project-giving-card"><i class="fa-solid fa-border-all"></i><h3>Perimeter Fence</h3><p>Improved security and safety for the children.</p></div>
+            <div class="project-giving-card"><i class="fa-solid fa-glass-water"></i><h3>Dairy Cow Project</h3><p>Sustainable resources for the home.</p></div>
+            <div class="project-giving-card"><i class="fa-solid fa-book-open"></i><h3>Education Sponsorship</h3><p>Pathways to continued learning for the children.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="donation-faq section-padding tone-b compact">
+    <div class="container">
+        <div class="section-heading center">
+            <span class="section-tag">Questions?</span>
+            <h2>Giving FAQs</h2>
+        </div>
+        <div class="faq-container">
+            <details class="faq-item"><summary>Who receives my donation? <i class="fa-solid fa-chevron-down"></i></summary><p>Sons of Manasseh Children's Home is a registered Children's Charitable Institution (CCI) in Kenya. Gifts support the care, education and protection of the children and the development of the home.</p></details>
+            <details class="faq-item"><summary>Can I give items instead of money? <i class="fa-solid fa-chevron-down"></i></summary><p>Yes. Food, clothing, books, toiletries, bedding and other supplies are welcome. Please contact us first so we can let you know what is needed most.</p></details>
+            <details class="faq-item"><summary>Can my church, school or company give as a group? <i class="fa-solid fa-chevron-down"></i></summary><p>Yes. We welcome groups and organisations. Contact us to talk about a gift, a project or a partnership.</p></details>
+            <details class="faq-item"><summary>How do I know my gift was received? <i class="fa-solid fa-chevron-down"></i></summary><p>Send us a short message with your name and the date of your gift, and we will be glad to confirm it and say thank you.</p></details>
+            <details class="faq-item"><summary>I have another question about giving. <i class="fa-solid fa-chevron-down"></i></summary><p>Please call us on 0722 968 657 or 0722 226 569, or email manassehchildren@gmail.com.</p></details>
+        </div>
+    </div>
+</section>
+
+<section class="donate-final-cta compact">
+    <div class="container donate-final-content">
+        <div class="cta-heart"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h2>Thank You for Giving Hope</h2>
+        <p>Together, we can give vulnerable children joy, hope and a bright future.</p>
+        <div class="cta-buttons">
+            <a href="#donate-options" class="btn btn-light">Give Now <i class="fa-solid fa-heart"></i></a>
+            <a href="get-involved.html" class="btn btn-outline-light">Other Ways to Help</a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div class="footer-about">
+            <a href="index.html" class="footer-logo">
+                <div class="logo-icon has-img"><img src="images/logo.jpg" alt="Sons of Manasseh Children's Home logo"></div>
+                <div><strong>Sons of Manasseh Children's Home</strong></div>
+            </a>
+            <p>Protecting, caring for, and empowering vulnerable children while raising the future generation.</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/manasehkids" target="_blank" rel="noopener" aria-label="Sons of Manasseh on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@sonsofmanasehchildrenhome4097" target="_blank" rel="noopener" aria-label="Sons of Manasseh on YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/beatricethuita" target="_blank" rel="noopener" aria-label="Sons of Manasseh on Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="projects.html">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="our-home.html">Our Home</a>
+        </div>
+        <div class="footer-links">
+            <h3>Get Involved</h3>
+            <a href="get-involved.html#volunteer">Volunteer</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="donate.html">Donate</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p><i class="fa-solid fa-user-tie"></i>Beatrice Thuita, Founder and Director</p>
+            <p><i class="fa-solid fa-location-dot"></i>FMRJ+CP, Olooloitikosh, Kiserian, Kajiado County, Kenya</p>
+            <p><i class="fa-solid fa-inbox"></i>P.O. Box 1734-0502, Karen</p>
+            <p><i class="fa-solid fa-phone"></i><a href="tel:+254722968657">0722 968 657</a></p>
+            <p><i class="fa-solid fa-phone"></i><a href="tel:+254722226569">0722 226 569</a></p>
+            <p><i class="fa-solid fa-envelope"></i><a href="mailto:manassehchildren@gmail.com">manassehchildren@gmail.com</a></p>
+            <p><i class="fa-solid fa-envelope"></i><a href="mailto:beatrice.kirigo@gmail.com">beatrice.kirigo@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2026 Sons of Manasseh Children's Home. All Rights Reserved.</p></div></div>
+</footer>
+
+<div class="donate-toast" id="donateToast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+    const toast = document.getElementById("donateToast");
+    function say(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(say.t);
+        say.t = setTimeout(function () { toast.classList.remove("show"); }, 2000);
+    }
+    function fallbackCopy(text) {
+        const ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly", "");
+        ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        let ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        say(ok ? "Copied" : "Press and hold to copy");
+    }
+    function copy(text) {
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () { say("Copied"); }, function () { fallbackCopy(text); });
+        } else { fallbackCopy(text); }
+    }
+
+    /* Mobile Money: two-step reveal. The details are not in the page text;
+       they are only filled in after the visitor completes step 1. */
+    const box = document.getElementById("momo");
+    const start = document.getElementById("momoStart");
+    const s1 = document.getElementById("momoStep1");
+    const s2 = document.getElementById("momoStep2");
+    const biz = document.getElementById("momoBiz");
+    const acc = document.getElementById("momoAcc");
+    let bizVal = "", accVal = "";
+    function decode(v) { try { return atob(v); } catch (e) { return ""; } }
+
+    start.addEventListener("click", function () {
+        start.hidden = true; s1.hidden = false;
+        document.getElementById("momoReady").focus();
+    });
+    document.getElementById("momoCancel").addEventListener("click", function () {
+        s1.hidden = true; start.hidden = false; start.focus();
+    });
+    document.getElementById("momoReady").addEventListener("click", function () {
+        bizVal = decode(box.getAttribute("data-b"));
+        accVal = decode(box.getAttribute("data-a"));
+        biz.textContent = bizVal; acc.textContent = accVal;
+        s1.hidden = true; s2.hidden = false;
+    });
+    document.getElementById("momoHide").addEventListener("click", function () {
+        biz.textContent = ""; acc.textContent = ""; bizVal = ""; accVal = "";
+        s2.hidden = true; start.hidden = false; start.focus();
+    });
+    document.getElementById("momoBizCopy").addEventListener("click", function () { copy(bizVal); });
+    document.getElementById("momoAccCopy").addEventListener("click", function () { copy(accVal); });
+
+    document.querySelectorAll("[data-copy]").forEach(function (b) {
+        b.addEventListener("click", function () { copy(b.getAttribute("data-copy")); });
+    });
+})();
+
+const menuToggle = document.getElementById("menuToggle");
+const navbar = document.getElementById("navbar");
+menuToggle.addEventListener("click", function () {
+    const open = navbar.classList.toggle("show");
+    menuToggle.setAttribute("aria-expanded", open);
+    const icon = menuToggle.querySelector("i");
+    icon.classList.toggle("fa-bars", !open);
+    icon.classList.toggle("fa-xmark", open);
+});
+</script>
+</body>
+</html>
